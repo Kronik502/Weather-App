@@ -1,0 +1,28 @@
+/* LocationInput Component Styles */
+.location-input {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+  max-width: 500px;
+  margin: 20px auto;
+}
+
+.location-input form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.location-input input {
+  border: 1px solid #007bff;
+}
+
+.location-input button {
+  background-color: #007bff;
+}
+
+.location-input button:hover {
+  background-color: #0056b3;
+}

@@ -1,0 +1,29 @@
+.weather-display {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+  }
+  
+  .weather-display i {
+    font-size: 3rem; /* Adjust size as needed */
+    color: #333; /* Adjust color as needed */
+    margin-bottom: 10px;
+  }
+  
+  .weather-display h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    color: #333;
+  }
+  
+  .weather-display p {
+    margin: 5px 0;
+    font-size: 1rem;
+    color: #666;
+  }
+  
