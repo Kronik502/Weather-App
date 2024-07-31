@@ -3,7 +3,9 @@ body {
   font-family: 'Arial', sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #f0f2f5;
+  background-color: #6258c4;
+  text-align: center;
+  color: #fff;
 }
 
 /* Container Styles */
@@ -18,24 +20,26 @@ body {
 input[type="text"] {
   padding: 10px;
   font-size: 16px;
-  border: 1px solid #ccc;
+  border: 1px solid #969696;
   border-radius: 5px;
   margin-right: 10px;
+ 
 }
 
 button {
   padding: 10px 20px;
   font-size: 16px;
   color: #fff;
-  background-color: #28a745;
+  background-color: #6258c4;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s, transform 0.3s;
+
 }
 
 button:hover {
-  background-color: #218838;
+  background-color: #1dbb3f;
   transform: scale(1.05);
 }
 
@@ -83,6 +87,7 @@ select {
   margin: 5px;
 }
 .weather-display {
+  margin-top: 20px;
   display: flex;
   align-items: center;
   justify-content: center;

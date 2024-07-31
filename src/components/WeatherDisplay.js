@@ -1,7 +1,10 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchWeather } from '../redux/weatherslice';
-
+import './WeatherDisplay.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSun, faCloud, faCloudRain, faSnowflake } from '@fortawesome/free-solid-svg-icons';
+import '@fortawesome/fontawesome-svg-core/styles.css';
 function WeatherDisplay() {
   const dispatch = useDispatch();
   const weather = useSelector((state) => state.weather.currentWeather);
@@ -20,12 +23,33 @@ function WeatherDisplay() {
     return <div>{error}</div>;
   }
 
+  const getWeatherIcon = (icon) => {
+    switch (icon) {
+      case '01d':
+      case '01n':
+        return faSun;
+      case '02d':
+      case '02n':
+        return faCloud;
+      case '09d':
+      case '09n':
+      case '10d':
+      case '10n':
+        return faCloudRain;
+      case '13d':
+      case '13n':
+        return faSnowflake;
+      default:
+        return faCloud;
+    }
+  };
+
   return (
     <div>
       {weather && (
         <div className="weather-display">
           <h2>Current Weather</h2>
-          <i className={`wi ${weather.icon}`}></i> {/* Display the icon */}
+          <FontAwesomeIcon icon={getWeatherIcon(weather.icon)} className="weather-icon" />
           <p>Date: {weather.date.toLocaleString()}</p>
           <p>Temperature: {weather.temperature}°C</p>
         </div>

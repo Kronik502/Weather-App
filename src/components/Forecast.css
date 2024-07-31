@@ -1,25 +1,39 @@
-/* Forecast Component Styles */
+.forecast-title {
+  color: #f8f8f8;
+  text-align: center;
+  margin-bottom: 20px;
+  font-size:  25px ;
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+
 .forecast-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
   padding: 20px;
-  background-color: #000000;
-  border-radius: 10px;
+  background-color: #8479e631;
+  border-radius: 50px;
   box-shadow: 0 4px 8px rgba(255, 254, 254, 0.1);
   margin-top: 20px;
   color: white;
 }
 
-.forecast-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 20px;
-}
-
 .forecast-item {
   background-color: #6258c4;
-  border-radius: 10px;
-  padding: 15px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 60px;
+  padding: 10px;
+  box-shadow: 0 100px 180px rgba(0, 204, 255, 0.1);
   text-align: center;
+  animation: fadeIn 0.5s ease-in;
+  width: 200px;
+}
+.forecast-item:hover{
+  background-color: #8479e6;
+}
+.forecast-item i {
+  font-size: 48px;
+  margin-bottom: 10px;
+  color: white;
 }
 
 .forecast-item p {
@@ -27,14 +41,6 @@
   font-size: 17px;
 }
 
-.forecast-item h3 {
-  font-size: 16px;
-  color: #0400ff;
-}
-.h2{
-  color: #6258c4;
-text-align: center;
-}
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -42,8 +48,4 @@ text-align: center;
   to {
     opacity: 1;
   }
-}
-
-.forecast-item {
-  animation: fadeIn 0.5s ease-in;
 }

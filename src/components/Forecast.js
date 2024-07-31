@@ -1,6 +1,9 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchForecast } from '../redux/weatherslice';
+import './Forecast.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSun, faCloud, faCloudRain, faSnowflake } from '@fortawesome/free-solid-svg-icons';
 
 function Forecast() {
   const dispatch = useDispatch();
@@ -9,7 +12,7 @@ function Forecast() {
   const error = useSelector((state) => state.weather.error);
 
   useEffect(() => {
-    dispatch(fetchForecast('London')); // Default location
+    dispatch(fetchForecast('Tembisa')); // Default location
   }, [dispatch]);
 
   if (weatherStatus === 'loading') {
@@ -20,22 +23,42 @@ function Forecast() {
     return <div>{error}</div>;
   }
 
+  const getWeatherIcon = (icon) => {
+    switch (icon) {
+      case '01d':
+      case '01n':
+        return faSun;
+      case '02d':
+      case '02n':
+        return faCloud;
+      case '09d':
+      case '09n':
+      case '10d':
+      case '10n':
+        return faCloudRain;
+      case '13d':
+      case '13n':
+        return faSnowflake;
+      default:
+        return faCloud;
+    }
+  };
+
   return (
     <div>
       {forecast && (
         <div>
-          <h2>Weather Forecast for {forecast.city.name}</h2>
-          {forecast.list.map((item) => (
-            <div key={item.dt} className="forecast-item">
-              <img
-                src={`http://openweathermap.org/img/wn/${item.weather[0].icon}.png`}
-                alt={item.weather[0].description}
-              />
-              <p>{new Date(item.dt * 1000).toLocaleString()}</p>
-              <p>Temperature: {item.main.temp}°C</p>
-              <p>Weather: {item.weather[0].description}</p>
-            </div>
-          ))}
+          <h2 className="forecast-title">Weather Forecast for {forecast.city.name}</h2>
+          <div className="forecast-container">
+            {forecast.list.map((item) => (
+              <div key={item.dt} className="forecast-item">
+                <FontAwesomeIcon icon={getWeatherIcon(item.weather[0].icon)} className="weather-icon" />
+                <p>{new Date(item.dt * 1000).toLocaleString()}</p>
+                <p>Temperature: {item.main.temp}°C</p>
+                <p>Weather: {item.weather[0].description}</p>
+              </div>
+            ))}
+          </div>
         </div>
       )}
     </div>
