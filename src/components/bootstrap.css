@@ -1,0 +1,24 @@
+/* Example for customizing Navbar */
+.navbar {
+    background-color: #6258c4; /* Your purple color */
+  }
+  
+  .navbar-brand, .nav-link {
+    color: #ffffff; /* White text */
+  }
+  
+  .navbar-brand:hover, .nav-link:hover {
+    color: #f8f8f8; /* Slightly lighter color for hover effect */
+  }
+  
+  /* Example for customizing Buttons */
+  .btn-primary {
+    background-color: #6258c4; /* Your purple color */
+    border-color: #6258c4; /* Same purple border */
+  }
+  
+  .btn-primary:hover {
+    background-color: #8479e6; /* Slightly lighter purple for hover effect */
+    border-color: #8479e6; /* Same lighter purple border */
+  }
+  

@@ -44,22 +44,83 @@ function Forecast() {
     }
   };
 
+  // Group forecast items by day of the week
+  const groupByDayAndTime = (forecastList) => {
+    const dayAndTimeMap = new Map();
+
+    forecastList.forEach((item) => {
+      const date = new Date(item.dt * 1000);
+      const day = date.toLocaleDateString(undefined, { weekday: 'long' });
+      const time = date.toLocaleTimeString(undefined, { hour: '2-digit', minute: '2-digit' });
+
+      if (!dayAndTimeMap.has(day)) {
+        dayAndTimeMap.set(day, new Map());
+      }
+
+      const timeMap = dayAndTimeMap.get(day);
+      if (!timeMap.has(time)) {
+        timeMap.set(time, { ...item, time });
+      }
+    });
+
+    const groupedForecast = {};
+    dayAndTimeMap.forEach((timeMap, day) => {
+      groupedForecast[day] = Array.from(timeMap.values());
+    });
+
+    return groupedForecast;
+  };
+
+  // Ensure forecast and forecast.list are defined before accessing
+  const groupedForecast = forecast && forecast.list ? groupByDayAndTime(forecast.list) : {};
+
+  // Get the next forecast item
+  const nextForecastItem = forecast && forecast.list && forecast.list.length > 0 ? forecast.list[0] : null;
+
   return (
-    <div>
-      {forecast && (
-        <div>
-          <h2 className="forecast-title">Weather Forecast for {forecast.city.name}</h2>
-          <div className="forecast-container">
-            {forecast.list.map((item) => (
-              <div key={item.dt} className="forecast-item">
-                <FontAwesomeIcon icon={getWeatherIcon(item.weather[0].icon)} className="weather-icon" />
-                <p>{new Date(item.dt * 1000).toLocaleString()}</p>
-                <p>Temperature: {item.main.temp}°C</p>
-                <p>Weather: {item.weather[0].description}</p>
-              </div>
-            ))}
+    <div className="forecast-wrapper">
+      {forecast && forecast.city && (
+        <>
+          <div className="forecast-left">
+            <h2 className="forecast-title">Weather Forecast for {forecast.city.name}</h2>
+            <div className="forecast-container">
+              {Object.keys(groupedForecast).map((day) => (
+                <div key={day} className="forecast-day">
+                  <h3>{day}</h3>
+                  {groupedForecast[day].map((item) => (
+                    <div key={item.dt} className="forecast-item">
+                      <FontAwesomeIcon icon={getWeatherIcon(item.weather[0].icon)} className="weather-icon" />
+                      <p>{item.time}</p>
+                      <p>Date: {new Date(item.dt * 1000).toLocaleDateString(undefined, {
+                        weekday: 'long',
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric',
+                      })}</p>
+                      <p>Temperature: {item.main.temp}°C</p>
+                      <p>Weather: {item.weather[0].description}</p>
+                    </div>
+                  ))}
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
+          {nextForecastItem && (
+            <div className="forecast-right">
+              <h2>Next Forecast</h2>
+              <FontAwesomeIcon icon={getWeatherIcon(nextForecastItem.weather[0].icon)} className="weather-icon-large" />
+              <p>{new Date(nextForecastItem.dt * 1000).toLocaleDateString(undefined, {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+              })}</p>
+              <p>{new Date(nextForecastItem.dt * 1000).toLocaleTimeString(undefined, { hour: '2-digit', minute: '2-digit' })}</p>
+              <p>Temperature: {nextForecastItem.main.temp}°C</p>
+              <p>Weather: {nextForecastItem.weather[0].description}</p>
+            </div>
+          )}
+        </>
       )}
     </div>
   );

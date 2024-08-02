@@ -1,0 +1,6 @@
+// Override Bootstrap variables
+$primary: #6258c4; // Your purple color
+$navbar-bg: #6258c4; // Navbar background color
+$link-color: #ffffff; // Link color
+
+@import 'node_modules/bootstrap/scss/bootstrap';

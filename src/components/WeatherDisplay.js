@@ -5,6 +5,7 @@ import './WeatherDisplay.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSun, faCloud, faCloudRain, faSnowflake } from '@fortawesome/free-solid-svg-icons';
 import '@fortawesome/fontawesome-svg-core/styles.css';
+import '../App.css'
 function WeatherDisplay() {
   const dispatch = useDispatch();
   const weather = useSelector((state) => state.weather.currentWeather);
@@ -45,12 +46,12 @@ function WeatherDisplay() {
   };
 
   return (
-    <div>
+    <div className='current'>
       {weather && (
         <div className="weather-display">
           <h2>Current Weather</h2>
           <FontAwesomeIcon icon={getWeatherIcon(weather.icon)} className="weather-icon" />
-          <p>Date: {weather.date.toLocaleString()}</p>
+          <p>Date: {weather.date.toLocaleDateString(undefined, { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</p>
           <p>Temperature: {weather.temperature}°C</p>
         </div>
       )}

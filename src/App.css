@@ -1,11 +1,11 @@
-/* General Styles */
+/* App.css */
 body {
   font-family: 'Arial', sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #6258c4;
+  background-color: #6258c4; /* Purple background */
   text-align: center;
-  color: #fff;
+  color: #fff; /* White text color for contrast */
 }
 
 /* Container Styles */
@@ -14,78 +14,23 @@ body {
   flex-direction: column;
   align-items: center;
   padding: 20px;
+  background-color: transparent; /* Ensure container blends with the body background */
 }
 
-/* Search Input and Button */
-input[type="text"] {
-  padding: 10px;
-  font-size: 16px;
-  border: 1px solid #969696;
-  border-radius: 5px;
-  margin-right: 10px;
- 
+/* Navbar Customization */
+.navbar {
+  background-color: transparent; /* Transparent to blend with body background */
 }
 
-button {
-  padding: 10px 20px;
-  font-size: 16px;
-  color: #fff;
-  background-color: #6258c4;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s, transform 0.3s;
-
+.navbar-brand, .nav-link {
+  color: #fff !important; /* White text for Navbar items */
 }
 
-button:hover {
-  background-color: #1dbb3f;
-  transform: scale(1.05);
+.nav-link:hover {
+  color: #f8f8f8 !important; /* Slightly lighter color on hover */
 }
 
 /* Weather Display */
-.weather-display {
-  text-align: center;
-}
-
-.weather-display img {
-  width: 100px;
-  height: auto;
-  margin-bottom: 10px;
-}
-
-/* Forecast Display */
-.forecast-item {
-  background-color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  padding: 15px;
-  margin: 10px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  animation: fadeIn 0.5s ease-in;
-}
-
-.forecast-item img {
-  width: 50px;
-  height: auto;
-  vertical-align: middle;
-  margin-right: 10px;
-}
-
-/* Settings and Offline Mode */
-.settings,
-.offline-mode {
-  margin-top: 20px;
-  text-align: center;
-}
-
-select {
-  padding: 10px;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  margin: 5px;
-}
 .weather-display {
   margin-top: 20px;
   display: flex;
@@ -95,23 +40,5 @@ select {
   padding: 20px;
   border: 1px solid #ddd;
   border-radius: 10px;
-  background-color: #f9f9f9;
-}
-
-.weather-display i {
-  font-size: 3rem; /* Adjust size as needed */
-  color: #333; /* Adjust color as needed */
-  margin-bottom: 10px;
-}
-
-.weather-display h2 {
-  margin: 0;
-  font-size: 1.5rem;
-  color: #333;
-}
-
-.weather-display p {
-  margin: 5px 0;
-  font-size: 1rem;
-  color: #666;
+  background-color: transparent; /* Transparent to blend with body background */
 }

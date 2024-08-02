@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import '../App.css'
 function Settings() {
   const [unit, setUnit] = useState('metric'); // or 'imperial'
   const [theme, setTheme] = useState('light'); // or 'dark'
@@ -15,19 +15,20 @@ function Settings() {
   };
 
   return (
-    <div>
+    <div className='online'>
       <h2>Settings</h2>
       <div>
-        <label>
+        <label >
           Temperature Unit:
           <select value={unit} onChange={handleUnitChange}>
-            <option value="metric">Celsius</option>
-            <option value="imperial">Fahrenheit</option>
+            <option value="metric">Celsius</option><br/>
+            
+            <option  value="imperial">Fahrenheit</option>
           </select>
         </label>
       </div>
       <div>
-        <label>
+        <label className='imp'>
           Theme:
           <select value={theme} onChange={handleThemeChange}>
             <option value="light">Light</option>

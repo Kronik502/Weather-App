@@ -17,7 +17,7 @@ function LocationInput() {
   };
 
   return (
-    <div>
+    <div className='loc'>
       <form onSubmit={handleSubmit}>
         <input
           type="text"

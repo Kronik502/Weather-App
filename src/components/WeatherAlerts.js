@@ -11,7 +11,7 @@ function WeatherAlerts() {
   const error = useSelector((state) => state.weather.error);
 
   useEffect(() => {
-    dispatch(fetchWeather('London')); // Default location
+    dispatch(fetchWeather('Tembisa')); // Default location
   }, [dispatch]);
 
   if (weatherStatus === 'loading') {
@@ -23,9 +23,9 @@ function WeatherAlerts() {
   }
 
   return (
-    <div>
+    <div className='alert' >
       {weather && weather.alerts && weather.alerts.length > 0 ? (
-  <div>
+  <div className='alert2' >
   <h2>Current Weather</h2>
   <img
     src={`http://openweathermap.org/img/wn/${weather.icon}.png`}
