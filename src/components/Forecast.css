@@ -1,3 +1,12 @@
+.forecast-left{
+  background-color: #6258c4;
+}
+.forecast-right{
+  background-color: #6258c4;
+}
+.forecast-wrapper{
+  background-color: #6258c4;
+}
 .forecast-title {
   color: #f8f8f8;
   text-align: center;
@@ -94,6 +103,7 @@
   font-family:cursive;
   color: #f8f8f8;
   margin-top: 65px;
+  
 }
 
 .weather-icon-large {
@@ -102,6 +112,8 @@
   color: white;
   animation: fadeIn 1s ease-in-out;
 }
+
+
 
 .weather-icon {
   font-size: 24px;
